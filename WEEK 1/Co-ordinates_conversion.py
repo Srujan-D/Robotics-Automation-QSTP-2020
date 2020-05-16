@@ -1,3 +1,5 @@
+''' The following python code helps the user to convert Coordinates from polar system to Cartesian system, or vice-versa'''
+
 import numpy as np				
 
 def pol2cart(r, theta):         #function for converting polar to cartesian coordinates.
