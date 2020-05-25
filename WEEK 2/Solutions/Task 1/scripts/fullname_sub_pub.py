@@ -20,7 +20,7 @@ def full_name():
     rospy.Subscriber("name", String, callback0)
     rospy.Subscriber("surname", String, callback1)
     pub = rospy.Publisher('fullname', String, queue_size=10)
-    rate = rospy.Rate(0.1) #10Hz
+    rate = rospy.Rate(10) #10 Hz
     #rospy.spin()
 
     while not rospy.is_shutdown():
