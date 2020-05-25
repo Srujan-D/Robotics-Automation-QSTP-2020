@@ -1,0 +1,18 @@
+<launch>
+    
+    <node pkg = "fullname_pubsub" 
+          type = "first_name_pub.py" 
+          name = "first_name_pub" 
+          output="screen" />
+    
+    <node pkg = "fullname_pubsub" 
+          type = "surname_pub.py" 
+          name = "surname_pub" 
+          output="screen" />
+    
+    <node pkg = "fullname_pubsub" 
+          type = "fullname_sub_pub.py" 
+          name = "fullname_sub_pub" 
+          output="screen" />
+
+</launch>
