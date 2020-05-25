@@ -5,7 +5,7 @@ from std_msgs.msg import String
 def surname_pub():
     pub = rospy.Publisher('surname', String, queue_size=10)
     rospy.init_node('surname_pub', anonymous = True)
-    rate = rospy.Rate(0.1) #10 hz
+    rate = rospy.Rate(10) #10 Hz
 
     while not rospy.is_shutdown():
         sur_name = "Deolasee"
