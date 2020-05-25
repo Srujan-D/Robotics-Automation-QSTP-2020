@@ -9,12 +9,16 @@ def callback0(msg):
     #rospy.loginfo("%s", msg)
     global name0 
     name0 = str(msg.data)
+    rospy.spin()
 
+    
 def callback1(msg):
     #rospy.loginfo("%s", msg)
     global name1 
     name1 = str(msg.data)
+    rospy.spin()
 
+    
 def full_name():
     rospy.init_node('fullname_sub_pub', anonymous = True)
     rospy.Subscriber("name", String, callback0)
