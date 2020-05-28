@@ -1,4 +1,4 @@
-Before reading this, it is advised to read the questoion given in the assignment. (The assignment is available in the 'WEEK 2' directory.)
+Before reading this, it is advised to read the question given in the assignment. (The assignment is available in the 'WEEK 2' directory.)
 The launch directory (in 'src' directory) contains two launch files.
 Launching the file 'turtle_circle.launch' moves the turtlebot in a circle of radius given by user. 
 Launching the file 'turtle_infinity.launch' moves the turtlebot in an 'eight/infinity' path consisting of two circles. The radius of the circle is to be given by the user.
