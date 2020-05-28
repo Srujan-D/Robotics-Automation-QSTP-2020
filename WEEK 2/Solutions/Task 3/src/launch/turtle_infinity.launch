@@ -1,0 +1,16 @@
+<launch>
+    <node   name="radius_pub" 
+            pkg="turtle_circle"
+            type="radius_pub.py" 
+            output="screen" />
+    
+    <node   name="ang_vel_server" 
+            pkg="turtle_circle"
+            type="ang_vel_server.py" 
+            output="screen" />
+
+    <node   name="move_infinity" 
+            pkg="turtle_circle"
+            type="move_infinity.py" 
+            output="screen" />
+</launch>
