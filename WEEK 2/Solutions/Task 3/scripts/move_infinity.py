@@ -29,16 +29,17 @@ class Turtle():
         while not rospy.is_shutdown():
             global change_time
             global flag
-        
             if (flag):
                 self.vel_msg.angular.z = abs(self.vel_msg.angular.z)     # 1st loop
                 if (self.radius != 0.0):            
+                    print("In Loop 1 of the path---------------------------------")
                     self.vel_msg.linear.x = 0.5     # If a non zero radius is entered by the user, the turtlebot will start to move.
                     print(self.vel_msg)             # If the user has entered a nonzero radius, the turtlebot3 velocity will be printed on screen.
                 self.pub.publish(self.vel_msg)
             else:
                 self.vel_msg.angular.z = -abs(self.vel_msg.angular.z)    # 2nd loop
                 if (self.radius != 0.0):            
+                    print("In Loop 2 of the path...................")
                     self.vel_msg.linear.x = 0.5     # If a non zero radius is entered by the user, the turtlebot will start to move.
                     print(self.vel_msg)             # If the user has entered a nonzero radius, the turtlebot3 velocity will be printed on screen.
                 self.pub.publish(self.vel_msg)
@@ -50,5 +51,5 @@ class Turtle():
 if __name__ == "__main__":
     rospy.wait_for_service("compute_ang_vel")
     o = Turtle()
-    change_time = rospy.Time.now()
+    change_time = rospy.Time.now() 
     o.publish()
