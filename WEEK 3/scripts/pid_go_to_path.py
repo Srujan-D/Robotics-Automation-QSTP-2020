@@ -50,7 +50,13 @@ class TurtleBot:
         # Windup Guard - In case the integral term accumulates a significant error during the rise (windup), thus overshooting.
         self.windup_guard = 10000000.0             
 
-
+    def set_pid(self):
+        self.PTerm = 0.0                        # Default Proportionality Term
+        self.ITerm = 0.0                        # Default Integral Term
+        self.DTerm = 0.0                        # Default Derivative Term
+        self.last_error = 0.0                   # After each iteration we will update the last_error.       
+        self.error = 0.0
+    
     def get_path(self, request):
         self.n = request
         print("in callback 1")
@@ -69,10 +75,10 @@ class TurtleBot:
     def dist(self, new_y, new_x):               # Calculates distance
         return sqrt(pow((new_x), 2) + pow((new_y), 2))
 
-    def turn_angle(self, new_y, new_x):     # Calculates the angle by which the turtlebot has to turn
+    def turn_angle(self, new_y, new_x):         # Calculates the angle by which the turtlebot has to turn
         return (atan2(new_y, new_x))
 
-    def calculate(self, new_y, new_x, Kp, Ki, Kd, feedback_value, current_time = None): # Calculates Angular Velocity
+    def calculate(self, new_y, new_x, Kp, Ki, Kd, feedback_value, current_time = None): # Calculates the required value
         self.error = (self.SetPoint - feedback_value)
         
         current_time = current_time if current_time is not None else time.time()
@@ -99,7 +105,7 @@ class TurtleBot:
 
     
     
-    def move2goal(self, current_time=None):     # Function that commonds the turtlebot
+    def move2goal(self, current_time=None):     # Function that commands the turtlebot
         
         vel_msg = Twist()
         i = 0
@@ -109,7 +115,6 @@ class TurtleBot:
         self.new_y = self.goal.y - self.y
                 
         while not rospy.is_shutdown(): 
-            #i = 0
             if(i < self.n_points) :
                 self.goal.x = self.n.x[i]
                 self.goal.y = self.n.y[i]
@@ -121,13 +126,13 @@ class TurtleBot:
             
             self.new_x = self.goal.x - self.x
             self.new_y = self.goal.y - self.y
-            while(((self.dist(self.new_y, self.new_x)) > 0.1) and (i < self.n_points)): #and (self.error > 0)  ):
+            while(((self.dist(self.new_y, self.new_x)) > 0.1) and (i < self.n_points)): 
                 self.goal.x = self.n.x[i]
                 self.goal.y = self.n.y[i]
                 self.new_x = self.goal.x - self.x
                 self.new_y = self.goal.y - self.y
                      
-                if((self.flag == False) and (round(abs(self.SetPoint-(self.theta)), 3) != 0)): # Precision upto 3 decimal places
+                if((self.flag == False) and (round(abs(self.SetPoint-(self.theta)), 2) != 0)): # Precision upto 2 decimal places
                     print("Rotating")
                     if (i == 0):
                         self.SetPoint = atan2(self.goal.y, self.goal.x)
@@ -163,7 +168,7 @@ class TurtleBot:
                     rospy.loginfo(self.feedback_value)
                     
                     self.Kp = 0.005
-                    self.Kd = 0.0000001 
+                    self.Kd = 0.000001 
                     self.Ki = 0.000001
                     vel_msg.angular.z = 0.0
                     vel_msg.linear.x = self.calculate(self.new_y, self.new_x, self.Kp, self.Ki, self.Kd, self.feedback_value)
@@ -180,7 +185,8 @@ class TurtleBot:
 
             
             if((i < self.n_points)) :
-               i += 1
+              self.set_pid() 
+              i += 1
                 
             elif (i >= self.n_points):
                 vel_msg.angular.z = 0
