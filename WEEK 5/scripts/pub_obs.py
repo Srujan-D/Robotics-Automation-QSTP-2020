@@ -2,7 +2,7 @@
 import rospy
 from geometry_msgs.msg import Twist, Point, PoseStamped
 from nav_msgs.msg import Path
-from std_msgs.msg import Float32MultiArray, Float64
+from std_msgs.msg import Float32MultiArray
 import sys
 import numpy as np 
 from path_nav.msg import points, mylist
@@ -30,9 +30,9 @@ class Publish():
                 Each obstacle has radius 0.25 units and height 10 units
                 Uncomment lines 33-37 in case the location of obstacles ([x,y]) is different from the ones mentioned in line 38, and comment line 38. Type any non-zero number when prompted to enter number of obstacles.
                 """
-                #self.goal.x = float(input("Enter x coordinate of centre of obsstacle : "))         
+                #self.goal.x = float(input("Enter x coordinate of centre of obstacle : "))         
                 #self.n_x = self.goal.x                                                             
-                #self.goal.y = float(input("Enter y coordinate of centre of obsstacle : "))         
+                #self.goal.y = float(input("Enter y coordinate of centre of obstacle : "))         
                 #self.n_y = self.goal.y                                                             
                 #self.obs += [(self.n_x, self.n_y)]                                                 
                 self.obs = [(0, 1.5), (0, 3), (0, 4.5), (3.0, 0), (3.0, 1.5), (3.0, 3), (3.0, 4.5), (1.5, 0), (1.5, 1.5), (1.5, 3), (1.5,4.5), (4.5, 0), (4.5, 1.5), (4.5, 3), (4.5,4.5)]  
