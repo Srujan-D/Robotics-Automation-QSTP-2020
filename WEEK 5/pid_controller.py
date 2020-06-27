@@ -8,7 +8,7 @@ from tf.transformations import euler_from_quaternion
 import time
 from path_nav.msg import points
  
-class TurtleBot:
+class Trotbot:
  
     def __init__(self, current_time=None):
         rospy.init_node('pid_controller', anonymous = True)
@@ -211,7 +211,7 @@ class TurtleBot:
  
 if __name__ == '__main__':
     try:
-        o = TurtleBot()
+        o = Trotbot()
         o.move2goal()
     except rospy.ROSInterruptException:
         pass
