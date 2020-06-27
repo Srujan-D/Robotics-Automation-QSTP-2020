@@ -13,4 +13,4 @@ There are some important comments on line 30 onwards in the pub_obs.py node, and
 Two self-defined messeges are used - points.msg, and mylist.msg . Both are available in the /msg directory.
 Other important instructions to run the nodes are given in the QSTP Final Project file.
 
-There are some bugs in the codes, but they are not enough to stop the nodes from running. They will be updated soon.
+There are some bugs in the codes, but they are not enough to stop the nodes from running. They will soon be removed.
