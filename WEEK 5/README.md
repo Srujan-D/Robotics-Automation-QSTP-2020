@@ -1,3 +1,4 @@
+This directory contains my code to the final project of this course.
 Before reading this, it is important to know what the final project is. So, it is suggested to read the QSTP Final Project file in the same directory.
 
 For running the codes, you have to first clone the "https://github.com/ERC-BPGC/omnibase" repo. 
