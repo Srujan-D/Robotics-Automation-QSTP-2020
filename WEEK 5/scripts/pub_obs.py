@@ -44,7 +44,6 @@ class Publish():
             
             rospy.loginfo(self.obs)
             self.pub.publish(self.obs)
-            self.flag = False
             self.rate.sleep()
 
 if __name__ == "__main__":
