@@ -12,7 +12,7 @@ Move the the pid_controller.py node from /scripts to /omnibase_controller node f
 There are some important comments on line 30 onwards in the pub_obs.py node, and it is advised to go through it before running it.
 Two self-defined messeges are used - points.msg, and mylist.msg . Both are available in the /msg directory.
 Other important instructions to run the nodes are given in the QSTP Final Project file.
-You can see the recording of the Trotbot going from start point (0,0) to goal point (6,6) by playing the Screencast_Trotbot.webm file.
+You can see the recording of the Trotbot going from start point (0,0) to goal point (6,6), also avoiding a series of cylindrical obstacles, by playing the Screencast_Trotbot.webm file.
 
 There are some bugs in the codes, but they are not enough to stop the nodes from running. They will soon be removed.
 
