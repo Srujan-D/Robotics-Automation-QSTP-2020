@@ -179,7 +179,7 @@ class RRT:
         return d, theta
 
 
-def main(gx = 6.0, gy = 6.0):
+def main(gx = 6.0, gy = 6.0):       #Goal point is (6.0, 6.0) Start point is origin
     print("start " + __file__)
     radius = 0.25
     # ====Search Path with RRT====
